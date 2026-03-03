@@ -1,1 +1,39 @@
-Succes!
+{% render 'partials/head.liquid',
+  title: 'Ad Talent Award 2026 – Overlegplatform Ad',
+  bodyClass: 'ad-talent-page'
+%}
+
+<main class="ad-main">
+
+  <section class="ad-section">
+    <h1>Ad Talent Award 2026</h1>
+    <p class="ad-muted">
+      Ontdek de genomineerde studenten van de Ad Talent Award 2026.
+    </p>
+  </section>
+
+  <section class="ad-section ad-students">
+    <h2>Genomineerde studenten</h2>
+
+    <section class="student-grid">
+
+      <article class="student-card">
+        <img src="/rick.jpg" alt="Rick Snijder">
+        <h3>Rick Snijder</h3>
+        <p class="ad-small ad-muted">Avans Academie Associate degrees</p>
+        <a href="/talent-award/rick-snijder" class="ad-btn ad-primary-btn">Bekijk profiel</a>
+      </article>
+
+      <article class="student-card">
+        <img src="/vera.jpg" alt="Vera Driessen">
+        <h3>Vera Driessen</h3>
+        <p class="ad-small ad-muted">Hogeschool Rotterdam</p>
+        <a href="/talent-award/vera-driessen" class="ad-btn ad-primary-btn">Bekijk profiel</a>
+      </article>
+
+    </section>
+  </section>
+
+</main>
+
+{% render 'partials/foot.liquid' %}
