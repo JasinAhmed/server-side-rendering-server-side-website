@@ -1,0 +1,377 @@
+/* ADCONNECT / OVERLEGPLATFORM AD — STYLESHEET */
+
+/* ================================
+   1. FONT
+================================ */
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/Inter_18pt-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/Inter_18pt-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Inter";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("../fonts/Inter_18pt-Bold.ttf") format("truetype");
+}
+
+
+/* ================================
+   2. DESIGN TOKENS (STYLEGUIDE)
+================================ */
+
+:root {
+
+  /* Primary scale */
+  --ad-primary-900: #000C1A;
+  --ad-primary-800: #001F44;
+  --ad-primary-700: #002A5C;
+  --ad-primary-600: #00408D;
+  --ad-primary-500: #0058C2;
+  --ad-primary-400: #006FF5;
+  --ad-primary-300: #5CA5FF;
+  --ad-primary-200: #8FC1FF;
+  --ad-primary-100: #C2DDFF;
+
+  /* Accent scale */
+  --ad-accent-600: #CD3618;
+  --ad-accent-500: #E75234;
+  --ad-accent-400: #F67055;
+  --ad-accent-300: #F99986;
+  --ad-accent-200: #FBC2B6;
+
+  /* Neutrals */
+  --ad-neutral-900: #13171D;
+  --ad-neutral-800: #171D24;
+  --ad-neutral-700: #242D39;
+  --ad-neutral-400: #435264;
+  --ad-neutral-350: #49596C;
+  --ad-neutral-200: #A1AEBD;
+  --ad-neutral-100: #D2D5D9;
+  --ad-neutral-050: #FAFAFA;
+
+  /* Component mapping */
+  --ad-primary: var(--ad-primary-400);
+  --ad-primary-hover: var(--ad-primary-500);
+  --ad-accent: var(--ad-accent-500);
+  --ad-accent-hover: var(--ad-accent-600);
+
+  --ad-page-bg: var(--ad-neutral-050);
+  --ad-container: #FFFFFF;
+  --ad-border: var(--ad-neutral-100);
+
+  --ad-text: var(--ad-neutral-900);
+  --ad-text-muted: var(--ad-neutral-400);
+
+  --ad-font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --ad-radius-lg: 14px;
+  --ad-radius-md: 10px;
+  --ad-radius-btn: 6px;
+
+  --ad-max-width: 960px;
+}
+
+
+/* ================================
+   3. BASE
+================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: var(--ad-font);
+  background: var(--ad-page-bg);
+  color: var(--ad-text);
+}
+
+main {
+  max-width: var(--ad-max-width);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+a {
+  color: var(--ad-primary);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--ad-primary-hover);
+  text-decoration: underline;
+}
+
+
+/* ================================
+   4. TYPOGRAPHY
+================================ */
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+p {
+  font-size: 16px;
+  margin: 0 0 12px;
+}
+
+.ad-small { font-size: 14px; }
+.ad-muted { color: var(--ad-text-muted); }
+
+
+/* ================================
+   5. SECTIONS
+================================ */
+
+.ad-section {
+  background: var(--ad-container);
+  border: 1px solid var(--ad-border);
+  padding: 1.5rem;
+  border-radius: var(--ad-radius-lg);
+}
+
+
+/* ================================
+   6. BUTTONS
+================================ */
+
+.ad-btn {
+  display: inline-block;
+  padding: 12px 16px;
+  border-radius: var(--ad-radius-btn);
+  border: 1px solid var(--ad-border);
+  font-weight: 600;
+  background: var(--ad-container);
+  color: var(--ad-text);
+  cursor: pointer;
+}
+
+.ad-btn.ad-primary-btn {
+  background: var(--ad-accent);
+  color: #FFFFFF;
+  border-color: var(--ad-accent);
+}
+.ad-btn.ad-primary-btn:hover {
+  background: var(--ad-accent-hover);
+  border-color: var(--ad-accent-hover);
+}
+
+.ad-btn.ad-secondary-btn {
+  background: transparent;
+  border: 2px solid var(--ad-primary);
+  color: var(--ad-primary);
+}
+.ad-btn.ad-secondary-btn:hover {
+  border-color: var(--ad-primary-hover);
+  color: var(--ad-primary-hover);
+}
+
+
+/* ================================
+   7. HEADER (DONKERBLAUW)
+================================ */
+
+.ad-header {
+  width: 100%;
+  background: var(--ad-primary-800);
+  color: #FFFFFF;
+}
+
+.ad-topnav {
+  background: var(--ad-primary-900);
+  max-width: var(--ad-max-width);
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ad-topnav ul,
+.ad-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.ad-mainnav {
+  max-width: var(--ad-max-width);
+  margin: 0 auto;
+  padding: 18px 16px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.ad-logo a {
+  color: #FFFFFF;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ad-menu a {
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+.ad-menu a:hover {
+  background: var(--ad-neutral-800);
+}
+
+
+/* ================================
+   8. TALENT AWARD (DARK PAGE)
+================================ */
+
+.ad-talent-page {
+  background: var(--ad-primary-900);
+  color: #FFFFFF;
+}
+
+.ad-talent-page .ad-section {
+  background: var(--ad-primary-800);
+  border: 1px solid var(--ad-neutral-700);
+}
+
+.ad-talent-page .ad-muted {
+  color: var(--ad-neutral-200);
+}
+
+.ad-talent-page main a {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+
+
+/* ================================
+   9. STUDENT GRID
+================================ */
+
+.student-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.student-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+@media (min-width: 600px) {
+  .student-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .student-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* ===============================
+   TALENT AWARD LAYOUT (zoals screenshot)
+================================ */
+
+.ad-talent-page {
+  background: #000C1A;
+  color: #FFFFFF;
+}
+
+/* Sections transparant maken */
+.ad-talent-page .ad-section {
+  background: transparent;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* Titel iets meer ruimte */
+.ad-talent-page h1,
+.ad-talent-page h2 {
+  margin-bottom: 2rem;
+}
+
+/* GRID */
+.student-grid {
+  display: grid;
+  gap: 3rem 4rem;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Desktop 5 kolommen */
+@media (min-width: 900px) {
+  .student-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* STUDENT CARD */
+.student-card {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* FOTO */
+.student-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* NAAM */
+.student-card h3 {
+  margin: 0 0 0.25rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.student-card h3 a {
+  color: #FFFFFF;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.student-card h3 a:hover {
+  color: #C2DDFF;
+}
+
+/* ONDERTEKST */
+.student-card p {
+  margin: 0;
+  font-size: 15px;
+  color: #C2DDFF;
+}
+
+/* VERWIJDER BUTTON (niet nodig in dit design) */
+.student-card .ad-btn {
+  display: none;
+}
