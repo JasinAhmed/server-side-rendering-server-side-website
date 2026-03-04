@@ -28,7 +28,7 @@
 
 
 /* ================================
-   2. DESIGN TOKENS (STYLEGUIDE)
+   2. custom properties
 ================================ */
 
 :root {
@@ -295,7 +295,7 @@ p {
 }
 
 /* ===============================
-   TALENT AWARD LAYOUT (zoals screenshot)
+   TALENT AWARD LAYOUT
 ================================ */
 
 .ad-talent-page {
@@ -369,9 +369,4 @@ p {
   margin: 0;
   font-size: 15px;
   color: #C2DDFF;
-}
-
-/* VERWIJDER BUTTON (niet nodig in dit design) */
-.student-card .ad-btn {
-  display: none;
 }
