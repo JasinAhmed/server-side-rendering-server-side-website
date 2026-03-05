@@ -6,9 +6,9 @@ import express from 'express'
 import { Liquid } from 'liquidjs';
 
 
-console.log('Hieronder moet je waarschijnlijk nog wat veranderen')
+console.log('')
 // Doe een fetch naar de data die je nodig hebt
-const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations')
+const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_news')
 
 // Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
 const apiResponseJSON = await apiResponse.json()
@@ -41,7 +41,64 @@ app.get('/', async function (request, response) {
    // Render index.liquid uit de Views map
    // Geef hier eventueel data aan mee
    
-   response.render('index.liquid')
+   const news = [
+     {
+       title: "Landelijke Ad-dag",
+       summary: "dit is dummy content"
+     },
+     {
+       title: "Workshops & netwerken",
+       summary: "dit is dummy content"
+     },
+     {
+       title: "Ad Talent Award",
+       summary: "dit is dummy content."
+     }
+   ]
+
+   response.render('index.liquid', { news: news })
+})
+
+
+// ROUTE: GENOMINEERDE STUDENTEN PAGINA
+// Deze route toont een pagina met genomineerde studenten
+// De data hieronder is dummy data (tijdelijke testdata)
+
+app.get('/genomineerden', async function (request, response) {
+
+  // Maak een array met genomineerde studenten
+  // Elke student heeft een naam, school en afbeelding
+  const nominees = [
+    {
+      name: "Thijs Kiens",
+      school: "Avans Academie Associate degrees",
+      image: "/style/fotothijs.jpg"
+    },
+    {
+      name: "Vera Driessen",
+      school: "Fontys",
+      image: "/style/fotovera.jpeg"
+    },
+    {
+      name: "Josien te Winkel",
+      school: "Grenslandcollege",
+      image: "/style/fotojosien.jpg"
+    },
+    {
+      name: "Rick Snijder",
+      school: "Hanze",
+      image: "/style/fotothijs.jpg"
+    },
+    {
+      name: "Stan van Roessel",
+      school: "HAS",
+      image: "/style/fotothijs.jpg"
+    }
+  ]
+
+  // Render de Liquid view 'genomineerden.liquid'
+  // en geef de dummy data (nominees) mee aan de template
+  response.render('genomineerden.liquid', { nominees: nominees })
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
@@ -61,3 +118,14 @@ app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
+
+// title: "Landelijke Ad-dag",
+//        summary: "Dit schooljaar vindt de landelijke Ad-dag plaats op vrijdag 17 april 2026!"
+//      },
+//      {
+//        title: "Workshops & netwerken",
+//        summary: "Ontmoet studenten, docenten en werkveldpartners tijdens inspirerende sessies."
+//      },
+//      {
+//        title: "Ad Talent Award",
+//        summary: "Jaarlijks worden twee Associate degree-talenten in het zonnetje gezet."
