@@ -363,3 +363,67 @@ a:hover{
     grid-column: 1 / -1;
   }
 }
+
+/* GENOMINEERDEN (cards + foto styling) */
+/* sectie wat ruimte */
+.genomineerden-sectie{
+  margin-top: var(--s7);
+}
+
+/* grid + geen bullets */
+.genomineerden-grid{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: grid;
+  gap: var(--s5);
+  grid-template-columns: 1fr; /* mobiel */
+}
+
+/* card zelf */
+.genomineerde-kaart{
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+/* foto container: zorgt dat crop netjes werkt */
+.genomineerde-kaart .kaart-afbeelding{
+  margin: 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* FOTO: vaste verhouding + crop */
+.genomineerde-kaart .kaart-afbeelding img{
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* altijd vierkant */
+  height: auto;            /* aspect-ratio bepaalt de hoogte */
+  object-fit: cover;       /* crop */
+  object-position: center; /* focus in het midden */
+}
+
+/* tekst in card */
+.genomineerde-kaart .kaart-inhoud{
+  padding: var(--s5);
+}
+
+.genomineerde-kaart .kaart-inhoud h3{
+  margin: 0 0 var(--s3);
+  font-size: 1.25rem;
+}
+
+.genomineerde-kaart .kaart-inhoud p{
+  margin: 0;
+  color: var(--tekst-zacht);
+}
+
+/* desktop: meerdere kolommen */
+@media (min-width: 1024px){
+  .genomineerden-grid{
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

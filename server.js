@@ -85,10 +85,7 @@ app.get('/genomineerden', async function (request, response) {
       name: "Rick Snijder",
       school: "Hanze",
     },
-    {
-      name: "Stan van Roessel",
-      school: "HAS",
-    }
+  
   ]
 
   // Render de Liquid view 'genomineerden.liquid'
