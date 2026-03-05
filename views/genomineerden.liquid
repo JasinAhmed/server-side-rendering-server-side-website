@@ -50,16 +50,33 @@
 
     <ul class="genomineerden-grid">
 
-      {% comment %} Check of er genomineerden zijn {% endcomment %}
       {% if nominees and nominees.size > 0 %}
 
-        {% comment %} Loop door alle genomineerden uit server.js {% endcomment %}
         {% for student in nominees %}
           <li>
             <article class="genomineerde-kaart">
 
               <figure class="kaart-afbeelding">
-                <img src="{{ student.image }}" alt="{{ student.name }}" width="220" height="220">
+
+                {% if student.name == "Thijs Kiens" %}
+                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
+
+                {% elsif student.name == "Vera Driessen" %}
+                  <img src="style/assets/fotovera.jpeg" alt="{{ student.name }}" width="220" height="220">
+
+                {% elsif student.name == "Josien te Winkel" %}
+                  <img src="style/assets/fotojosien.jpg" alt="{{ student.name }}" width="220" height="220">
+
+                {% elsif student.name == "Rick Snijder" %}
+                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
+
+                {% elsif student.name == "Stan van Roessel" %}
+                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
+
+                {% else %}
+                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
+                {% endif %}
+
               </figure>
 
               <header class="kaart-inhoud">

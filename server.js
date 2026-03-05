@@ -72,27 +72,22 @@ app.get('/genomineerden', async function (request, response) {
     {
       name: "Thijs Kiens",
       school: "Avans Academie Associate degrees",
-      image: "/style/fotothijs.jpg"
     },
     {
       name: "Vera Driessen",
       school: "Fontys",
-      image: "/style/fotovera.jpeg"
     },
     {
       name: "Josien te Winkel",
       school: "Grenslandcollege",
-      image: "/style/fotojosien.jpg"
     },
     {
       name: "Rick Snijder",
       school: "Hanze",
-      image: "/style/fotothijs.jpg"
     },
     {
       name: "Stan van Roessel",
       school: "HAS",
-      image: "/style/fotothijs.jpg"
     }
   ]
 
