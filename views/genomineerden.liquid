@@ -1,0 +1,111 @@
+{% render 'partials/head.liquid', title: 'Genomineerden' %}
+
+<main class="pagina-container" id="inhoud">
+
+  <header class="site-header">
+
+    <nav class="snelle-links-nav">
+      <ul class="snelle-links-lijst">
+        <li><a href="/#faq">FAQ's</a></li>
+        <li><a href="/#over-ons">Over ons</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <nav class="hoofd-navigatie">
+      <a href="/" class="logo-link">
+        <img src="/style/assets/logoad.png" alt="Overlegplatform Ad's" width="180" height="45">
+      </a>
+
+      <ul class="hoofd-menu">
+        <li><a class="menu-link" href="/">Home</a></li>
+        <li><a class="menu-link" href="/#uitleg">Over Ad's</a></li>
+        <li><a class="menu-link" href="/#publicaties">Publicaties</a></li>
+        <li><a class="menu-link actief" href="/genomineerden">Talent Award</a></li>
+        <li><a class="menu-link" href="/#nieuws">Nieuws</a></li>
+      </ul>
+
+      <a href="/#ad-dag" class="knop-cta">Kom naar Ad-dag</a>
+    </nav>
+
+  </header>
+
+  <!-- PAGINA INTRO -->
+  <section class="pagina-intro">
+    <header class="divider">
+      <h1>Genomineerde studenten</h1>
+    </header>
+
+    <p>
+      Klik op een genomineerde student om meer te bekijken.
+    </p>
+  </section>
+
+  <!-- GENOMINEERDEN -->
+  <section class="genomineerden-sectie">
+
+    <header class="divider">
+      <h2>Genomineerden</h2>
+    </header>
+
+    <ul class="genomineerden-grid">
+
+      {% comment %} Check of er genomineerden zijn {% endcomment %}
+      {% if nominees and nominees.size > 0 %}
+
+        {% comment %} Loop door alle genomineerden uit server.js {% endcomment %}
+        {% for student in nominees %}
+          <li>
+            <article class="genomineerde-kaart">
+
+              <figure class="kaart-afbeelding">
+                <img src="{{ student.image }}" alt="{{ student.name }}" width="220" height="220">
+              </figure>
+
+              <header class="kaart-inhoud">
+                <h3>{{ student.name }}</h3>
+                <p>{{ student.school }}</p>
+              </header>
+
+            </article>
+          </li>
+        {% endfor %}
+
+      {% else %}
+
+        <p>Er zijn nog geen genomineerden.</p>
+
+      {% endif %}
+
+    </ul>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" id="contact">
+
+    <section class="footer-blok">
+      <h2>Overlegplatform Ad's</h2>
+      <p>
+        Het Overlegplatform Associate degrees brengt Ad-opleidingen samen
+        om kennis te delen en profielen af te stemmen.
+      </p>
+    </section>
+
+    <section class="footer-blok">
+      <h2>Contact</h2>
+      <p>
+        <a class="footer-link" href="mailto:platformassociatedegrees@outlook.com">
+          platformassociatedegrees@outlook.com
+        </a>
+      </p>
+      <p class="footer-klein">
+        © Overlegplatform Associate degrees. Alle rechten voorbehouden
+      </p>
+    </section>
+
+  </footer>
+
+</main>
+
+{% render 'partials/foot.liquid' %}
