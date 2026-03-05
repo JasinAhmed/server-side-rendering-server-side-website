@@ -21,7 +21,7 @@
         <li><a class="menu-link actief" href="#">Home</a></li>
         <li><a class="menu-link" href="#uitleg">Over Ad's</a></li>
         <li><a class="menu-link" href="#publicaties">Publicaties</a></li>
-        <li><a class="menu-link" href="#talent">Talent Award</a></li>
+        <li><a class="menu-link" href="genomei">Talent Award</a></li>
         <li><a class="menu-link" href="#nieuws">Nieuws</a></li>
       </ul>
 
@@ -59,44 +59,37 @@
 
     <ul class="nieuws-grid">
 
-      <li>
-        <article class="nieuws-kaart">
-          <figure class="kaart-afbeelding">
-            <img src="/style/assets/ad-dag.jpg" alt="Landelijke Ad-dag" width="360" height="240">
-          </figure>
-          <header class="nieuws-inhoud">
-            <h3>Landelijke Ad-dag</h3>
-            <p>Dit schooljaar vindt de landelijke Ad-dag plaats op vrijdag 17 april 2026!</p>
-            <a class="tekst-link" href="#ad-dag">Meer informatie</a>
-          </header>
-        </article>
-      </li>
+       {% comment %} Check of er nieuws bestaat en of er minimaal 1 nieuwsitem is {% endcomment %}
+      {% if news and news.size  0 %}
+        
+        {% comment %} Loop door alle nieuwsitems die uit server.js komen {% endcomment %}
+        {% for item in news %}
+        <li>
+          <article class="nieuws-kaart">
 
-      <li>
-        <article class="nieuws-kaart">
-          <figure class="kaart-afbeelding">
-            <img src="/style/assets/ad-dag.jpg" alt="Workshops en netwerken" width="360" height="240">
-          </figure>
-          <header class="nieuws-inhoud">
-            <h3>Workshops & netwerken</h3>
-            <p>Ontmoet studenten, docenten en werkveldpartners tijdens inspirerende sessies.</p>
-            <a class="tekst-link" href="#">Meer informatie</a>
-          </header>
-        </article>
-      </li>
+            <figure class="kaart-afbeelding">
+              <img src="/style/assets/ad-dag.jpg" alt="{{ item.title }}" width="360" height="240">
+            </figure>
 
-      <li>
-        <article class="nieuws-kaart">
-          <figure class="kaart-afbeelding">
-            <img src="/style/assets/ad-dag.jpg" alt="Ad Talent Award" width="360" height="240">
-          </figure>
-          <header class="nieuws-inhoud">
-            <h3>Ad Talent Award</h3>
-            <p>Jaarlijks worden twee Associate degree-talenten in het zonnetje gezet.</p>
-            <a class="tekst-link" href="#talent">Meer informatie</a>
-          </header>
-        </article>
-      </li>
+            <header class="nieuws-inhoud">
+              <h3>{{ item.title }}</h3>
+
+              {% if item.summary %}
+              <p>{{ item.summary }}</p>
+              {% endif %}
+
+              <a class="tekst-link" href="#">Lees meer</a>
+            </header>
+
+          </article>
+        </li>
+        {% endfor %}
+
+      {% else %}
+
+        <p>Er zijn nog geen nieuwsberichten.</p>
+
+      {% endif %}
 
     </ul>
   </section>
