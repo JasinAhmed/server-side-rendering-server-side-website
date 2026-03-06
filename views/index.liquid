@@ -17,15 +17,23 @@
         <img src="/style/assets/logoad.png" alt="Overlegplatform Ad's" width="180" height="45">
       </a>
 
+      <button class="hamburger">☰</button>
+
       <ul class="hoofd-menu">
         <li><a class="menu-link actief" href="#">Home</a></li>
         <li><a class="menu-link" href="#uitleg">Over Ad's</a></li>
         <li><a class="menu-link" href="#publicaties">Publicaties</a></li>
         <li><a class="menu-link" href="/genomineerden">Talent Award</a></li>
         <li><a class="menu-link" href="#nieuws">Nieuws</a></li>
+
+        <!-- CTA in hamburger menu (mobiel) -->
+        <li class="menu-cta">
+          <a href="#ad-dag" class="knop-cta">Kom naar Ad-dag</a>
+        </li>
       </ul>
 
-      <a href="#ad-dag" class="knop-cta">Kom naar Ad-dag</a>
+      <!-- CTA op desktop -->
+      <a href="#ad-dag" class="knop-cta desktop-cta">Kom naar Ad-dag</a>
     </nav>
 
   </header>
@@ -59,10 +67,10 @@
 
     <ul class="nieuws-grid">
 
-       {% comment %} Check of er nieuws bestaat en of er minimaal 1 nieuwsitem is {% endcomment %}
-      {% if news and news.size  0 %}
-        
-        {% comment %} Loop door alle nieuwsitems die uit server.js komen {% endcomment %}
+      {% comment %} Check of er nieuws bestaat en of er minimaal 1 nieuwsitem is {% endcomment %}
+      {% if news and news.size > 0 %}
+
+        {% comment %} Loop door alle nieuwsitems {% endcomment %}
         {% for item in news %}
         <li>
           <article class="nieuws-kaart">
