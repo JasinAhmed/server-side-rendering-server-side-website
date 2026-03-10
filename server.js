@@ -65,30 +65,30 @@ app.get('/genomineerden', async function (request, response) {
 })
 
 
-// // ROUTE: DETAILPAGINA VAN EEN GENOMINEERDE
-// // Deze route toont meer informatie over één specifieke genomineerde
-// app.get('/genomineerden/:id', async function (request, response) {
+// ROUTE: DETAILPAGINA VAN EEN GENOMINEERDE
+// Deze route toont meer informatie over één specifieke genomineerde
+app.get('/genomineerden/:id', async function (request, response) {
 
-//   // Haal het id op uit de URL
-//   const id = request.params.id
+  // Haal het id op uit de URL
+  const id = request.params.id
 
-//   // Haal opnieuw alle genomineerden op uit de database
-//   const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations')
+  // Haal opnieuw alle genomineerden op uit de database
+  const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations')
 
-//   // Zet de opgehaalde data om naar JSON
-//   const apiResponseJSON = await apiResponse.json()
+  // Zet de opgehaalde data om naar JSON
+  const apiResponseJSON = await apiResponse.json()
 
-//   // Pak de array met genomineerden
-//   const nominees = apiResponseJSON.data
+  // Pak de array met genomineerden
+  const nominees = apiResponseJSON.data
 
-//   // Zoek de juiste genomineerde op basis van het id
-//   const nominee = nominees.find(function (item) {
-//     return item.id == id
-//   })
+  // Zoek de juiste genomineerde op basis van het id
+  const nominee = nominees.find(function (item) {
+    return item.id == id
+  })
 
-//   // Render de detailpagina en geef de genomineerde mee
-//   response.render('genomineerde-detail.liquid', { nominee: nominee })
-// })
+  // Render de detailpagina en geef de genomineerde mee
+  response.render('genomineerde-detail.liquid', { nominee: nominee })
+})
 
 
 // Maak een POST route voor de homepagina
