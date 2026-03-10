@@ -1,9 +1,7 @@
 {% render 'partials/head.liquid', title: 'Genomineerden' %}
 
 <main class="pagina-container" id="inhoud">
-
   <header class="site-header">
-
     <nav class="snelle-links-nav">
       <ul class="snelle-links-lijst">
         <li><a href="/#faq">FAQ's</a></li>
@@ -27,7 +25,6 @@
 
       <a href="/#ad-dag" class="knop-cta">Kom naar Ad-dag</a>
     </nav>
-
   </header>
 
   <!-- PAGINA INTRO -->
@@ -43,64 +40,51 @@
 
   <!-- GENOMINEERDEN -->
   <section class="genomineerden-sectie">
-
     <header class="divider">
       <h2>Genomineerden</h2>
     </header>
 
     <ul class="genomineerden-grid">
-
       {% if nominees and nominees.size > 0 %}
-
         {% for student in nominees %}
           <li>
             <article class="genomineerde-kaart">
-
               <figure class="kaart-afbeelding">
-
-                {% if student.name == "Thijs Kiens" %}
-                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
-
-                {% elsif student.name == "Vera Driessen" %}
-                  <img src="style/assets/fotovera.jpeg" alt="{{ student.name }}" width="220" height="220">
-
-                {% elsif student.name == "Josien te Winkel" %}
-                  <img src="style/assets/fotojosien.jpg" alt="{{ student.name }}" width="220" height="220">
-
-                {% elsif student.name == "Rick Snijder" %}
-                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
-
-                {% elsif student.name == "Stan van Roessel" %}
-                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
-
+                {% if student.profile_picture %}
+                  <img src="https://fdnd-agency.directus.app/assets/{{ student.profile_picture }}" alt="{{ student.title }}" width="220" height="220">
                 {% else %}
-                  <img src="style/assets/fotothijs.jpg" alt="{{ student.name }}" width="220" height="220">
+                  <img src="/style/assets/fotothijs.jpg" alt="{{ student.title }}" width="220" height="220">
                 {% endif %}
-
               </figure>
 
               <header class="kaart-inhoud">
-                <h3>{{ student.name }}</h3>
-                <p>{{ student.school }}</p>
-              </header>
+                <h3>{{ student.title }}</h3>
 
+                {% if student.institution %}
+                  <p>{{ student.institution }}</p>
+                {% endif %}
+
+                {% if student.course %}
+                  <p>{{ student.course }}</p>
+                {% endif %}
+
+                <p>
+                  <a class="tekst-link" href="/genomineerden/{{ student.id }}">Lees meer</a>
+                </p>
+              </header>
             </article>
           </li>
         {% endfor %}
-
       {% else %}
-
-        <p>Er zijn nog geen genomineerden.</p>
-
+        <li>
+          <p>Er zijn nog geen genomineerden.</p>
+        </li>
       {% endif %}
-
     </ul>
-
   </section>
 
   <!-- FOOTER -->
   <footer class="site-footer" id="contact">
-
     <section class="footer-blok">
       <h2>Overlegplatform Ad's</h2>
       <p>
@@ -120,9 +104,7 @@
         © Overlegplatform Associate degrees. Alle rechten voorbehouden
       </p>
     </section>
-
   </footer>
-
 </main>
 
 {% render 'partials/foot.liquid' %}

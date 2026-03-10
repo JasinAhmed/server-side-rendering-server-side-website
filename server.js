@@ -47,22 +47,22 @@ app.get('/', async function (request, response) {
 })
 
 
-// // ROUTE: GENOMINEERDE STUDENTEN PAGINA
-// // Deze route toont een overzicht van alle genomineerde studenten
-// app.get('/genomineerden', async function (request, response) {
+// ROUTE: GENOMINEERDE STUDENTEN PAGINA
+// Deze route toont een overzicht van alle genomineerde studenten
+app.get('/genomineerden', async function (request, response) {
 
-//   // Haal de genomineerden op uit de database
-//   const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations')
+  // Haal de genomineerden op uit de database
+  const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations')
 
-//   // Zet de opgehaalde data om naar JSON
-//   const apiResponseJSON = await apiResponse.json()
+  // Zet de opgehaalde data om naar JSON
+  const apiResponseJSON = await apiResponse.json()
 
-//   // Pak alleen de array met genomineerden uit de JSON
-//   const nominees = apiResponseJSON.data
+  // Pak alleen de array met genomineerden uit de JSON
+  const nominees = apiResponseJSON.data
 
-//   // Render de pagina en geef nominees mee
-//   response.render('genomineerden.liquid', { nominees: nominees })
-// })
+  // Render de pagina en geef nominees mee
+  response.render('genomineerden.liquid', { nominees: nominees })
+})
 
 
 // // ROUTE: DETAILPAGINA VAN EEN GENOMINEERDE
