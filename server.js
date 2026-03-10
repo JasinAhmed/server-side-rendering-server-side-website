@@ -1,123 +1,118 @@
 // Importeer het npm package Express (uit de door npm aangemaakte node_modules map)
-// Deze package is geïnstalleerd via `npm install`, en staat als 'dependency' in package.json
+// Deze package is geïnstalleerd via npm install`npm install`, en staat als 'dependency' in package.json
 import express from 'express'
 
 // Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
 import { Liquid } from 'liquidjs';
 
 
-console.log('')
-// Doe een fetch naar de data die je nodig hebt
-const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_news')
-
-// Lees van de response van die fetch het JSON object in, waar we iets mee kunnen doen
-const apiResponseJSON = await apiResponse.json()
-
-// Controleer eventueel de data in je console
-// (Let op: dit is _niet_ de console van je browser, maar van NodeJS, in je terminal)
-console.log(apiResponseJSON)
-
-
 // Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
 
-// Maak werken met data uit formulieren iets prettiger
-app.use(express.urlencoded({extended: true}))
+// Zorg dat formulierdata makkelijker gelezen kan worden
+app.use(express.urlencoded({ extended: true }))
 
-// Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
-// Bestanden in deze map kunnen dus door de browser gebruikt worden
+// Gebruik de map 'public' voor statische bestanden
+// Bijvoorbeeld CSS, afbeeldingen en JavaScript
 app.use(express.static('public'))
 
-// Stel Liquid in als 'view engine'
+// Stel Liquid in als view engine
 const engine = new Liquid();
-app.engine('liquid', engine.express()); 
+app.engine('liquid', engine.express());
 
-// Stel de map met Liquid templates in
-// Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
+// Stel de map met views in
 app.set('views', './views')
 
-// Maak een GET route voor de index (meestal doe je dit in de root, als /)
+// Zet Liquid als view engine
+app.set('view engine', 'liquid')
+
+
+// Maak een GET route voor de homepagina
 app.get('/', async function (request, response) {
-   // Render index.liquid uit de Views map
-   // Geef hier eventueel data aan mee
-   
-   const news = [
-     {
-       title: "Landelijke Ad-dag",
-       summary: "dit is dummy content"
-     },
-     {
-       title: "Workshops & netwerken",
-       summary: "dit is dummy content"
-     },
-     {
-       title: "Ad Talent Award",
-       summary: "dit is dummy content."
-     }
-   ]
 
-   response.render('index.liquid', { news: news })
+  // Haal de nieuwsdata op uit de database
+  const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_news')
+
+  // Zet de opgehaalde data om naar JSON
+  const apiResponseJSON = await apiResponse.json()
+
+  // Laat de data zien in de terminal
+  console.log(apiResponseJSON)
+
+  // Pak alleen de array met nieuwsitems uit de JSON
+  const news = apiResponseJSON.data
+
+  // Render index.liquid en geef news mee
+  response.render('index.liquid', { news: news })
 })
 
 
-// ROUTE: GENOMINEERDE STUDENTEN PAGINA
-// Deze route toont een pagina met genomineerde studenten
-// De data hieronder is dummy data (tijdelijke testdata)
+// // ROUTE: GENOMINEERDE STUDENTEN PAGINA
+// // Deze route toont een overzicht van alle genomineerde studenten
+// app.get('/genomineerden', async function (request, response) {
 
-app.get('/genomineerden', async function (request, response) {
+//   // Haal de genomineerden op uit de database
+//   const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations')
 
-  // Maak een array met genomineerde studenten
-  // Elke student heeft een naam, school en afbeelding
-  const nominees = [
-    {
-      name: "Thijs Kiens",
-      school: "Avans Academie Associate degrees",
-    },
-    {
-      name: "Vera Driessen",
-      school: "Fontys",
-    },
-    {
-      name: "Josien te Winkel",
-      school: "Grenslandcollege",
-    },
-    {
-      name: "Rick Snijder",
-      school: "Hanze",
-    },
-  
-  ]
+//   // Zet de opgehaalde data om naar JSON
+//   const apiResponseJSON = await apiResponse.json()
 
-  // Render de Liquid view 'genomineerden.liquid'
-  // en geef de dummy data (nominees) mee aan de template
-  response.render('genomineerden.liquid', { nominees: nominees })
-})
+//   // Pak alleen de array met genomineerden uit de JSON
+//   const nominees = apiResponseJSON.data
 
-// Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
-// Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
+//   // Render de pagina en geef nominees mee
+//   response.render('genomineerden.liquid', { nominees: nominees })
+// })
+
+
+// // ROUTE: DETAILPAGINA VAN EEN GENOMINEERDE
+// // Deze route toont meer informatie over één specifieke genomineerde
+// app.get('/genomineerden/:id', async function (request, response) {
+
+//   // Haal het id op uit de URL
+//   const id = request.params.id
+
+//   // Haal opnieuw alle genomineerden op uit de database
+//   const apiResponse = await fetch('https://fdnd-agency.directus.app/items/adconnect_nominations')
+
+//   // Zet de opgehaalde data om naar JSON
+//   const apiResponseJSON = await apiResponse.json()
+
+//   // Pak de array met genomineerden
+//   const nominees = apiResponseJSON.data
+
+//   // Zoek de juiste genomineerde op basis van het id
+//   const nominee = nominees.find(function (item) {
+//     return item.id == id
+//   })
+
+//   // Render de detailpagina en geef de genomineerde mee
+//   response.render('genomineerde-detail.liquid', { nominee: nominee })
+// })
+
+
+// Maak een POST route voor de homepagina
 app.post('/', async function (request, response) {
-  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
-  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+
+  // Stuur de gebruiker terug naar de homepagina
   response.redirect(303, '/')
 })
 
-// Stel het poortnummer in waar Express op moet gaan luisteren
-// Lokaal is dit poort 8000, als dit ergens gehost wordt, is het waarschijnlijk poort 80
+
+// Stel het poortnummer in
 app.set('port', process.env.PORT || 8000)
 
-// Start Express op, haal daarbij het zojuist ingestelde poortnummer op
+
+// Start de server
 app.listen(app.get('port'), function () {
-  // Toon een bericht in de console en geef het poortnummer door
+
+  // Laat in de terminal zien dat de server werkt
   console.log(`Application started on http://localhost:${app.get('port')}`)
 })
 
-// title: "Landelijke Ad-dag",
-//        summary: "Dit schooljaar vindt de landelijke Ad-dag plaats op vrijdag 17 april 2026!"
-//      },
-//      {
-//        title: "Workshops & netwerken",
-//        summary: "Ontmoet studenten, docenten en werkveldpartners tijdens inspirerende sessies."
-//      },
-//      {
-//        title: "Ad Talent Award",
-//        summary: "Jaarlijks worden twee Associate degree-talenten in het zonnetje gezet."
+
+// 404 pagina
+// Als een route niet bestaat, laat dan 404.liquid zien
+app.use((req, res) => {
+  res.status(404).render('404.liquid')
+})
