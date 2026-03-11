@@ -1,40 +1,50 @@
 {% render 'partials/head.liquid', title: nominee.title %}
 
-<main class="pagina-container" id="inhoud">
-  <header class="site-header">
-    <nav class="snelle-links-nav">
-      <ul class="snelle-links-lijst">
-        <li><a href="/#faq">FAQ's</a></li>
-        <li><a href="/#over-ons">Over ons</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
+<header class="site-header">
 
-    <nav class="hoofd-navigatie">
+  <nav class="snelle-links-nav" aria-label="Snelle links">
+    <ul class="snelle-links-lijst pagina-container">
+      <li><a href="/#faq">FAQ's</a></li>
+      <li><a href="/#over-ons">Over ons</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hoofd-navigatie-balk">
+    <nav class="hoofd-navigatie pagina-container" aria-label="Hoofdnavigatie">
       <a href="/" class="logo-link">
         <img src="/style/assets/logoad.png" alt="Overlegplatform Ad's" width="180" height="45">
       </a>
 
-      <ul class="hoofd-menu">
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="hoofd-menu" aria-label="Open menu">
+        ☰
+      </button>
+
+      <ul class="hoofd-menu" id="hoofd-menu">
         <li><a class="menu-link" href="/">Home</a></li>
         <li><a class="menu-link" href="/#uitleg">Over Ad's</a></li>
         <li><a class="menu-link" href="/#publicaties">Publicaties</a></li>
         <li><a class="menu-link actief" href="/genomineerden">Talent Award</a></li>
         <li><a class="menu-link" href="/#nieuws">Nieuws</a></li>
+        <li class="menu-cta">
+          <a href="/#ad-dag" class="knop-cta">Kom naar Ad-dag</a>
+        </li>
       </ul>
 
-      <a href="/#ad-dag" class="knop-cta">Kom naar Ad-dag</a>
+      <a href="/#ad-dag" class="knop-cta desktop-cta">Kom naar Ad-dag</a>
     </nav>
-  </header>
+  </section>
 
-  <!-- TERUG LINK -->
+</header>
+
+<main class="pagina-container" id="inhoud">
+
   <section class="pagina-intro">
     <p>
       <a class="tekst-link" href="/genomineerden">← Terug naar overzicht</a>
     </p>
   </section>
 
-  <!-- DETAIL -->
   <section class="genomineerde-detail">
     <header class="divider">
       <h1>{{ nominee.title }}</h1>
@@ -91,7 +101,6 @@
     </article>
   </section>
 
-  <!-- FOOTER -->
   <footer class="site-footer" id="contact">
     <section class="footer-blok">
       <h2>Overlegplatform Ad's</h2>
@@ -113,6 +122,7 @@
       </p>
     </section>
   </footer>
+
 </main>
 
 {% render 'partials/foot.liquid' %}
