@@ -1,44 +1,44 @@
 {% render 'partials/head.liquid', title: 'Home' %}
 
-<main class="pagina-container" id="inhoud">
+<header class="site-header">
 
-  <header class="site-header">
+  <nav class="snelle-links-nav" aria-label="Snelle links">
+    <ul class="snelle-links-lijst pagina-container">
+      <li><a href="#faq">FAQ's</a></li>
+      <li><a href="#over-ons">Over ons</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <nav class="snelle-links-nav">
-      <ul class="snelle-links-lijst">
-        <li><a href="#faq">FAQ's</a></li>
-        <li><a href="#over-ons">Over ons</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <nav class="hoofd-navigatie">
+  <section class="hoofd-navigatie-balk">
+    <nav class="hoofd-navigatie pagina-container" aria-label="Hoofdnavigatie">
       <a href="/" class="logo-link">
         <img src="/style/assets/logoad.png" alt="Overlegplatform Ad's" width="180" height="45">
       </a>
 
-      <button class="hamburger">☰</button>
+      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="hoofd-menu" aria-label="Open menu">
+        ☰
+      </button>
 
-      <ul class="hoofd-menu">
-        <li><a class="menu-link actief" href="#">Home</a></li>
+      <ul class="hoofd-menu" id="hoofd-menu">
+        <li><a class="menu-link actief" href="/">Home</a></li>
         <li><a class="menu-link" href="#uitleg">Over Ad's</a></li>
         <li><a class="menu-link" href="#publicaties">Publicaties</a></li>
         <li><a class="menu-link" href="/genomineerden">Talent Award</a></li>
         <li><a class="menu-link" href="#nieuws">Nieuws</a></li>
-
-        <!-- CTA in hamburger menu (mobiel) -->
         <li class="menu-cta">
           <a href="#ad-dag" class="knop-cta">Kom naar Ad-dag</a>
         </li>
       </ul>
 
-      <!-- CTA op desktop -->
       <a href="#ad-dag" class="knop-cta desktop-cta">Kom naar Ad-dag</a>
     </nav>
+  </section>
 
-  </header>
+</header>
 
-  <!-- HERO -->
+<main class="pagina-container" id="inhoud">
+
   <section class="hero-sectie">
     <header class="hero-tekst">
       <h1>Het landelijke platform voor Associate degrees</h1>
@@ -58,164 +58,47 @@
     </figure>
   </section>
 
-  <!-- NIEUWS -->
-  <section class="nieuws" id="nieuws">
-
-    <header class="divider">
+  <section class="nieuws-sectie" id="nieuws">
+    <header class="sectie-kop">
+      <span class="divider-lijn" aria-hidden="true"></span>
       <h2>Het laatste nieuws</h2>
+      <span class="divider-lijn" aria-hidden="true"></span>
     </header>
 
-    <ul class="nieuws-grid">
-
-      {% comment %} Check of er nieuws bestaat en of er minimaal 1 nieuwsitem is {% endcomment %}
-      {% if news and news.size  0 %}
-
-        {% comment %} Loop door alle nieuwsitems {% endcomment %}
+    {% if news and news.size > 0 %}
+      <ul class="nieuws-grid">
         {% for item in news %}
-        <li>
-          <article class="nieuws-kaart">
+          <li>
+            <article class="nieuws-kaart">
+              <figure class="kaart-afbeelding">
+                {% if item.image %}
+                  <img src="https://fdnd-agency.directus.app/assets/{{ item.image }}" alt="{{ item.title }}" width="360" height="240">
+                {% else %}
+                  <img src="/style/assets/ad-dag.jpg" alt="{{ item.title }}" width="360" height="240">
+                {% endif %}
+              </figure>
 
-            <figure class="kaart-afbeelding">
-              <img src="/style/assets/ad-dag.jpg" alt="{{ item.title }}" width="360" height="240">
-            </figure>
+              <footer class="nieuws-inhoud">
+                {% if item.date %}
+                  <p class="nieuws-meta">{{ item.date }}</p>
+                {% endif %}
 
-            <header class="nieuws-inhoud">
-              <h3>{{ item.title }}</h3>
+                <h3>{{ item.title }}</h3>
 
-              {% if item.description %}
-              <p>{{ item.description }}</p>
-              {% endif %}
+                {% if item.description %}
+                  <p>{{ item.description }}</p>
+                {% endif %}
 
-              <a class="tekst-link" href="#">Lees meer</a>
-            </header>
-
-          </article>
-        </li>
+                <a class="tekst-link" href="#">Lees meer</a>
+              </footer>
+            </article>
+          </li>
         {% endfor %}
-
-      {% else %}
-
-        <p>Er zijn nog geen nieuwsberichten.</p>
-
-      {% endif %}
-
-    </ul>
+      </ul>
+    {% else %}
+      <p>Er zijn nog geen nieuwsberichten.</p>
+    {% endif %}
   </section>
-
-  <!-- UITLEG -->
-  <section class="uitleg-ad-sectie" id="uitleg">
-    <header class="uitleg-kop">
-      <img src="/style/assets/logoad.png" alt="Logo Overlegplatform Ad's" class="uitleg-ad-icoon" width="56" height="56">
-      <h2>Wat zijn Associate degrees en hoe sluit het aan bij jouw wensen?</h2>
-    </header>
-
-    <p>
-      Associate degrees zijn tweejarige hbo-opleidingen die sterk praktijkgericht zijn en direct aansluiten op de
-      arbeidsmarkt. Ze combineren werken en leren en zijn bedoeld voor studenten die zich willen ontwikkelen op
-      hbo-niveau, zonder direct een vierjarige bachelor te volgen. Een Associate degree biedt daarnaast flexibiliteit:
-      je behaalt een zelfstandig diploma en kunt doorstromen naar een bacheloropleiding.
-    </p>
-
-    <a href="#" class="tekst-link">Meer info over Ad's</a>
-
-    <figure class="uitleg-foto">
-      <img src="/style/assets/ad-dag.jpg" alt="Sfeerbeeld van een bijeenkomst" width="900" height="600">
-    </figure>
-  </section>
-
-  <!-- ONTDEK -->
-  <section class="ontdek-sectie" id="publicaties">
-
-    <header class="ontdek-kop">
-      <h2>Ontdek het Ad-onderwijs</h2>
-      <p>
-        Leer alles over Associate degrees, doorstroommogelijkheden en netwerkevenementen.
-        Blijf op de hoogte van Ad-opleidingen en activiteiten binnen het overlegplatform.
-      </p>
-    </header>
-
-    <article class="ontdek-blok">
-      <h3>Doorstroom Ad</h3>
-      <p>Met een Associate degree stroom je door naar het derde jaar van een bachelor.</p>
-      <a class="tekst-link" href="#">Meer over doorstroom →</a>
-    </article>
-
-    <article class="ontdek-blok" id="ad-dag">
-      <h3>Ad-dag</h3>
-      <p>Jaarlijks event met workshops, kennisdeling en netwerken.</p>
-      <a class="tekst-link" href="#">Meer over Ad-dag →</a>
-    </article>
-
-    <article class="ontdek-blok" id="talent">
-      <h3>Ad Talent Award</h3>
-      <p>Jaarlijkse award voor twee Associate degree-talenten.</p>
-      <a class="tekst-link" href="#">Meer over Talent Award →</a>
-    </article>
-
-  </section>
-
-  <!-- PARTNERS -->
-  <section class="partners-sectie" id="over-ons">
-
-    <header class="divider">
-      <h2>Partijen waarmee wij samenwerken</h2>
-    </header>
-
-    <ul class="partners-lijst">
-      <li>Hogeschool van Amsterdam</li>
-      <li>Hogeschool Inholland</li>
-      <li>HAN</li>
-      <li>Hogeschool Leiden</li>
-      <li>BUas</li>
-    </ul>
-
-  </section>
-
-  <!-- VOORDELEN -->
-  <section class="voordelen-sectie">
-
-    <header class="voordelen-kop">
-      <h2>Waarom kiezen voor een Associate degree?</h2>
-      <p>
-        Praktijkgericht onderwijs met doorstroommogelijkheden,
-        zodat je snel ervaring opdoet én een diploma haalt.
-      </p>
-    </header>
-
-    <ul class="voordelen-lijst">
-      <li>Praktijkgericht leren en direct vaardigheden toepassen</li>
-      <li>Korte studieduur van 2 jaar</li>
-      <li>Doorstromen naar een bacheloropleiding mogelijk</li>
-    </ul>
-
-    <a class="knop-blauw" href="#uitleg">Meer over Associate degrees</a>
-
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer" id="contact">
-
-    <section class="footer-blok">
-      <h2>Overlegplatform Ad's</h2>
-      <p>
-        Het Overlegplatform Associate degrees brengt Ad-opleidingen samen
-        om kennis te delen en profielen af te stemmen.
-      </p>
-    </section>
-
-    <section class="footer-blok">
-      <h2>Contact</h2>
-      <p>
-        <a class="footer-link" href="mailto:platformassociatedegrees@outlook.com">
-          platformassociatedegrees@outlook.com
-        </a>
-      </p>
-      <p class="footer-klein">
-        © Overlegplatform Associate degrees. Alle rechten voorbehouden
-      </p>
-    </section>
-
-  </footer>
 
 </main>
 
