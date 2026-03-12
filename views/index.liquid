@@ -10,7 +10,7 @@
     </ul>
   </nav>
 
-  <section class="hoofd-navigatie-balk">
+  <div class="hoofd-navigatie-balk">
     <nav class="hoofd-navigatie pagina-container" aria-label="Hoofdnavigatie">
       <a href="/" class="logo-link">
         <img src="/style/assets/logoad.png" alt="Overlegplatform Ad's" width="180" height="45">
@@ -33,7 +33,7 @@
 
       <a href="#ad-dag" class="knop-cta desktop-cta">Kom naar Ad-dag</a>
     </nav>
-  </section>
+  </div>
 
 </header>
 
@@ -78,7 +78,7 @@
                 {% endif %}
               </figure>
 
-              <footer class="nieuws-inhoud">
+              <div class="nieuws-inhoud">
                 {% if item.date %}
                   <p class="nieuws-meta">{{ item.date }}</p>
                 {% endif %}
@@ -90,7 +90,7 @@
                 {% endif %}
 
                 <a class="tekst-link" href="#">Lees meer</a>
-              </footer>
+              </div>
             </article>
           </li>
         {% endfor %}
