@@ -10,7 +10,7 @@
     </ul>
   </nav>
 
-  <section class="hoofd-navigatie-balk">
+  <div class="hoofd-navigatie-balk">
     <nav class="hoofd-navigatie pagina-container" aria-label="Hoofdnavigatie">
       <a href="/" class="logo-link">
         <img src="/style/assets/logoad.png" alt="Overlegplatform Ad's" width="180" height="45">
@@ -33,23 +33,19 @@
 
       <a href="/#ad-dag" class="knop-cta desktop-cta">Kom naar Ad-dag</a>
     </nav>
-  </section>
+  </div>
 
 </header>
 
 <main class="pagina-container" id="inhoud">
 
-  <section class="pagina-intro">
+  <div class="pagina-intro">
     <p>
       <a class="tekst-link" href="/genomineerden">← Terug naar overzicht</a>
     </p>
-  </section>
+  </div>
 
-  <section class="genomineerde-detail">
-    <header class="divider">
-      <h1>{{ nominee.title }}</h1>
-    </header>
-
+  <div class="genomineerde-detail">
     <article class="genomineerde-detail-kaart">
       <figure class="detail-afbeelding">
         {% if nominee.profile_picture %}
@@ -59,7 +55,9 @@
         {% endif %}
       </figure>
 
-      <section class="detail-inhoud">
+      <div class="detail-inhoud">
+        <h1>{{ nominee.title }}</h1>
+
         {% if nominee.institution %}
           <p><strong>Onderwijsinstelling:</strong> {{ nominee.institution }}</p>
         {% endif %}
@@ -87,19 +85,19 @@
         {% if nominee.excerpt %}
           <section>
             <h2>Korte introductie</h2>
-            <p>{{ nominee.excerpt }}</p>
+            {{ nominee.excerpt }}
           </section>
         {% endif %}
 
         {% if nominee.body %}
           <section>
             <h2>Meer over deze genomineerde</h2>
-            <p>{{ nominee.body }}</p>
+            {{ nominee.body }}
           </section>
         {% endif %}
-      </section>
+      </div>
     </article>
-  </section>
+  </div>
 
   <footer class="site-footer" id="contact">
     <section class="footer-blok">
