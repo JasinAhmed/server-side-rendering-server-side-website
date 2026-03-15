@@ -34,8 +34,13 @@ Op de Talent Award pagina kan de gebruiker alle genomineerden bekijken. Wanneer 
 Hierdoor kunnen bezoekers makkelijk zien wie de genomineerden zijn en meer leren over hun werk of prestaties.
 
 <!-- Voeg hier eventueel screenshots van je pagina's toe -->
+<img width="1800" height="760" alt="Image" src="https://github.com/user-attachments/assets/afe175ed-884c-4589-b268-6ace0a8e5075" />
 
+<img width="1800" height="760" alt="Image" src="https://github.com/user-attachments/assets/c98b8a78-5265-4d45-b18a-66f677275744" />
 
+<img width="1800" height="760" alt="Image" src="https://github.com/user-attachments/assets/6214f4e8-851a-4176-8925-23a61cd878bd" />
+
+https://github.com/user-attachments/assets/bfa08726-440b-4ec6-bcb8-3cca9803654c
 
 ## Huisstijl
 Bij het maken van de website heb ik geprobeerd een moderne en duidelijke stijl te gebruiken. Voor de homepagina heb ik gekozen voor een **dark mode ontwerp**, zodat de website een strakke en moderne uitstraling heeft. De pagina’s zijn overzichtelijk opgebouwd zodat bezoekers makkelijk door de genomineerden kunnen navigeren en informatie kunnen bekijken.
