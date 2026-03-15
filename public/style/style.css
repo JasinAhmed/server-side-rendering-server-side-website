@@ -1,6 +1,5 @@
 /* STIJLGUIDE — Overlegplatform Ad's */
 
-
    /* 1) DESIGN TOKENS */
 
 :root{
@@ -583,23 +582,46 @@ ul{
   display:flex;
   flex-direction:column;
   height:100%;
-  background:var(--merk-800);
-  border:1.5px solid #00408f;
-  border-radius:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:24px;
+  background: #000C1A;
   overflow:hidden;
-  box-shadow:var(--shadow);
   padding:var(--s5);
+  transition:
+    transform .28s ease,
+    box-shadow .28s ease,
+    border-color .28s ease,
+    background .28s ease;
+  backdrop-filter:blur(6px);
+}
+
+.genomineerde-kaart:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,255,255,.18);
+  box-shadow:
+    0 22px 48px rgba(0,0,0,.30),
+    0 0 0 1px rgba(255,255,255,.03),
+    inset 0 1px 0 rgba(255,255,255,.05);
 }
 
 .genomineerde-kaart .kaart-afbeelding{
   margin:0 0 var(--s5);
+  overflow:hidden;
+  border-radius:18px;
+  background:rgba(255,255,255,.03);
 }
 
 .genomineerde-kaart .kaart-afbeelding img{
   width:100%;
   height:220px;
   object-fit:cover;
-  border-radius:14px;
+  border-radius:18px;
+  transition:transform .45s ease;
+}
+
+.genomineerde-kaart:hover .kaart-afbeelding img{
+  transform:scale(1.04);
 }
 
 .kaart-inhoud{
