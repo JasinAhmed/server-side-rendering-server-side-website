@@ -2,7 +2,7 @@
 
 <header class="site-header">
 
-  <nav class="snelle-links-nav" aria-label="Snelle links">
+  <nav class="snelle-links-nav">
     <ul class="snelle-links-lijst pagina-container">
       <li><a href="#faq">FAQ's</a></li>
       <li><a href="#over-ons">Over ons</a></li>
@@ -11,12 +11,12 @@
   </nav>
 
   <div class="hoofd-navigatie-balk">
-    <nav class="hoofd-navigatie pagina-container" aria-label="Hoofdnavigatie">
+    <nav class="hoofd-navigatie pagina-container">
       <a href="/" class="logo-link">
         <img src="/style/assets/logoad.png" alt="Overlegplatform Ad's" width="180" height="45">
       </a>
 
-      <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="hoofd-menu" aria-label="Open menu">
+      <button class="hamburger" id="hamburger">
         ☰
       </button>
 
@@ -60,9 +60,9 @@
 
   <section class="nieuws-sectie" id="nieuws">
     <header class="sectie-kop">
-      <span class="divider-lijn" aria-hidden="true"></span>
+      <span class="divider-lijn"></span>
       <h2>Het laatste nieuws</h2>
-      <span class="divider-lijn" aria-hidden="true"></span>
+      <span class="divider-lijn"></span>
     </header>
 
     {% if news and news.size > 0 %}
